@@ -1,0 +1,132 @@
+body {
+	overflow: hidden;
+	margin: 4px;
+	background-color: white;
+	font: 11px Menlo, Consolas;
+}
+body.popover {
+   background-color: transparent;
+}
+div.container {
+	display: inline-block;
+	position: relative;
+	padding: 0;
+}
+div.sbScrollBtn {
+	position: absolute;
+	top: 0px;
+	z-index: -1;
+	width: 32px;
+	height: 100%;
+	opacity: 0;
+	cursor: default;
+}
+div.sbScrollBtn.enabled {
+	z-index: 1;
+	opacity: 1;
+}
+span.highlight {
+	outline: 1px solid magenta;
+	background: rgba(255,0,255,0.1);
+}
+option.highlighted {
+	background-color: whitesmoke;
+}
+option.selected {
+	background-color: silver;
+}
+option.dirty {
+	color: red;
+}
+option.newrule {
+	color: blue;
+}
+#leftDiv {
+	float: left;
+}
+#selectorMenu {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	border: 1px solid silver;
+	font-size: 11px;
+	cursor: default;
+}
+#lrDivider {
+	position: relative;
+	float: left;
+	width: 2px;
+	margin: 0 1px;
+	cursor: col-resize;
+}
+#sbContainer {
+	position: relative;
+	width: 100%;
+	height: 18px;
+	margin-bottom: 4px;
+	border: 1px solid silver;
+	vertical-align: middle;
+}
+#blockBox {
+	position: relative;
+	margin-right: 2px;
+	border: 1px solid silver;
+	font: 11px Menlo, Consolas;
+	resize: none;
+}
+#selectorBar {
+	position: relative;
+	height: 14px;
+	padding: 2px;
+	background-color: white;
+	white-space: nowrap;
+	overflow: hidden;
+	cursor: text;
+	z-index: 0;
+}
+#selectorBar.editable {
+	height: auto;
+	white-space: normal;
+	z-index: 2;
+}
+#selectorBar span.sc {
+	/*padding: 0 4px;*/
+}
+#sbScrollLeftBtn {
+	left: 0px;
+	background: -webkit-gradient(
+		linear, left top, right top, 
+		from(rgba(255,255,255,1)), to(rgba(255,255,255,0))
+	);
+}
+#sbScrollRightBtn {
+	right: 0px;
+	background: -webkit-gradient(
+		linear, right top, left top, 
+		from(rgba(255,255,255,1)), to(rgba(255,255,255,0))
+	);
+}
+#saveButton {
+	position: absolute;
+	bottom: 8px;
+	right: 64px;
+	font-weight: bold;
+}
+#revertButton {
+	position: absolute;
+	bottom: 8px;
+	right: 8px;
+}
+#resizeBar {
+	position: absolute;
+	z-index: 2147483647;
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+	height: 4px;
+	margin: 0;
+	border-width: 0;
+	cursor: row-resize;
+}

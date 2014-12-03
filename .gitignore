@@ -1,0 +1,9 @@
+/archive
+/assets
+/library
+/old
+/private
+/*.safariextz
+*.sublime*
+.DS_Store
+keys.js

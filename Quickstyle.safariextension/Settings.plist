@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Key</key>
+		<string>usePopover</string>
+		<key>Title</key>
+		<string>Display style editor in</string>
+		<key>Titles</key>
+		<array>
+			<string>popover (requires Safari 5.1+)</string>
+			<string>iframe</string>
+		</array>
+		<key>Type</key>
+		<string>RadioButtons</string>
+		<key>Values</key>
+		<array>
+			<true/>
+			<false/>
+		</array>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>Y</string>
+		<key>Key</key>
+		<string>shHotkey</string>
+		<key>Title</key>
+		<string>Hotkey is ⌘⌥</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>Key</key>
+		<string>handleZoomKeys</string>
+		<key>Title</key>
+		<string>Take over ⌘+/⌘-/⌘0 keys for whole page zoom</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string></string>
+		<key>Key</key>
+		<string>defaultZoom</string>
+		<key>MaximumValue</key>
+		<real>3</real>
+		<key>MinimumValue</key>
+		<real>0.5</real>
+		<key>StepValue</key>
+		<real>0.10000000000000001</real>
+		<key>Title</key>
+		<string>⌘0 zoom level</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>Key</key>
+		<string>faveFontString</string>
+		<key>Title</key>
+		<string>Favorite font 1</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>Key</key>
+		<string>faveFont2String</string>
+		<key>Title</key>
+		<string>Favorite font 2</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>Key</key>
+		<string>useZoom</string>
+		<key>Title</key>
+		<string>Resizing method</string>
+		<key>Titles</key>
+		<array>
+			<string>Prefer font sizing (affects text only)</string>
+			<string>Prefer zooming (affects everything)</string>
+		</array>
+		<key>Type</key>
+		<string>RadioButtons</string>
+		<key>Values</key>
+		<array>
+			<false/>
+			<true/>
+		</array>
+	</dict>
+	<dict>
+		<key>Key</key>
+		<string>useClickKeys</string>
+		<key>Title</key>
+		<string>Enable click+keypress shortcuts</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<string>Separator</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<false/>
+		<key>Key</key>
+		<string>openHelp</string>
+		<key>Title</key>
+		<string>Click this box to view instructions for using Quickstyle</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+</array>
+</plist>

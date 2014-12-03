@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="style_manager.js"></script>
+	<link rel="stylesheet" type="text/css" href="style_manager.css">
+	<title>Quickstyle Editor</title>
+</head>
+<body>
+	<div id="leftDiv" class="container">
+		<select id="selectorMenu" size="80" multiple="multiple" tabindex="1"></select>
+	</div>
+	<div id="lrDivider"></div>
+	<div id="rightDiv" class="container">
+		<div id="sbContainer">
+			<div id="sbScrollLeftBtn" class="sbScrollBtn"></div>
+			<div id="selectorBar" contenteditable tabindex="2"></div>
+			<div id="sbScrollRightBtn" class="sbScrollBtn"></div>
+		</div>
+		<textarea id="blockBox" contenteditable tabindex="3"></textarea>
+		<button id="saveButton" title="Tip: Type Command-Enter to save.">Save</button>
+		<button id="revertButton">Revert</button>
+	</div>
+	<hr id="resizeBar">
+</body>
+</html>

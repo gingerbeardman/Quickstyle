@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>Canisbos Computing</string>
+	<key>Builder Version</key>
+	<string>10600.1.25.1</string>
+	<key>CFBundleDisplayName</key>
+	<string>Quickstyle</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.canisbos.rightsizer</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.2.13</string>
+	<key>CFBundleVersion</key>
+	<string>1213</string>
+	<key>Chrome</key>
+	<dict>
+		<key>Global Page</key>
+		<string>global.html</string>
+		<key>Menus</key>
+		<array>
+			<dict>
+				<key>Identifier</key>
+				<string>myMenu</string>
+				<key>Menu Items</key>
+				<array>
+					<dict>
+						<key>Checked State</key>
+						<real>0.0</real>
+						<key>Command</key>
+						<string>InitiateSLS</string>
+						<key>Identifier</key>
+						<string>InitiateSLS</string>
+						<key>Title</key>
+						<string>Activate Selector Helper</string>
+					</dict>
+					<dict>
+						<key>Checked State</key>
+						<real>0.0</real>
+						<key>Command</key>
+						<string>OpenStyleEditorLocal</string>
+						<key>Identifier</key>
+						<string>OpenStyleEditorLocal</string>
+						<key>Title</key>
+						<string>Edit Styles for This Site</string>
+					</dict>
+					<dict>
+						<key>Command</key>
+						<string>OpenStyleEditorGlobal</string>
+						<key>Identifier</key>
+						<string>OpenStyleEditorGlobal</string>
+						<key>Title</key>
+						<string>Edit Global Styles</string>
+					</dict>
+					<dict>
+						<key>Command</key>
+						<string>ResetStyleBoxStats</string>
+						<key>Identifier</key>
+						<string>ResetStyleBoxStats</string>
+						<key>Title</key>
+						<string>Reset Style Editor Size</string>
+					</dict>
+				</array>
+			</dict>
+		</array>
+		<key>Popovers</key>
+		<array>
+			<dict>
+				<key>Filename</key>
+				<string>style_manager.html</string>
+				<key>Height</key>
+				<real>200</real>
+				<key>Identifier</key>
+				<string>qsPopover</string>
+				<key>Width</key>
+				<real>800</real>
+			</dict>
+		</array>
+		<key>Toolbar Items</key>
+		<array>
+			<dict>
+				<key>Command</key>
+				<string>InitiateSLS</string>
+				<key>Identifier</key>
+				<string>myButton</string>
+				<key>Image</key>
+				<string>toolbarButton.png</string>
+				<key>Label</key>
+				<string>Quickstyle</string>
+				<key>Menu</key>
+				<string>myMenu</string>
+				<key>Palette Label</key>
+				<string>Quickstyle</string>
+				<key>Popover</key>
+				<string></string>
+				<key>Tool Tip</key>
+				<string>Activate Quickstyle Selector Helper</string>
+			</dict>
+		</array>
+	</dict>
+	<key>Content</key>
+	<dict>
+		<key>Scripts</key>
+		<dict>
+			<key>Start</key>
+			<array>
+				<string>injected.js</string>
+			</array>
+		</dict>
+	</dict>
+	<key>Description</key>
+	<string>Restyle anything quickly and conveniently.</string>
+	<key>DeveloperIdentifier</key>
+	<string>ZANVZTSER6</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict>
+			<key>Include Secure Pages</key>
+			<true/>
+			<key>Level</key>
+			<string>All</string>
+		</dict>
+	</dict>
+	<key>Update Manifest URL</key>
+	<string>https://raw.githubusercontent.com/canisbos/Quickstyle/master/dist/Update.plist</string>
+	<key>Website</key>
+	<string>http://canisbos.com/</string>
+</dict>
+</plist>
