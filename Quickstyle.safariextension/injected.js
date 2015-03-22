@@ -16,6 +16,12 @@ HTMLElement.prototype.getCompoundSelector = function (preferId) {
 	var thisNode = this;
 	var selector = '';
 	var done = false;
+	if (thisNode == document.documentElement) {
+		return 'HTML';
+	}
+	if (thisNode == document.body) {
+		return 'BODY';
+	}
 	while (!done) {
 		var prefix = thisNode.nodeName;
 		if (prefix === 'HTML') {
