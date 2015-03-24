@@ -48,7 +48,7 @@
 		<key>MinimumValue</key>
 		<real>0.5</real>
 		<key>StepValue</key>
-		<real>0.10000000000000001</real>
+		<real>0.1</real>
 		<key>Title</key>
 		<string>⌘0 zoom level</string>
 		<key>Type</key>
@@ -93,6 +93,14 @@
 		<string>useClickKeys</string>
 		<key>Title</key>
 		<string>Enable click+keypress shortcuts</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>Key</key>
+		<string>hideCMItems</string>
+		<key>Title</key>
+		<string>Don&apos;t add context menu items</string>
 		<key>Type</key>
 		<string>CheckBox</string>
 	</dict>

@@ -10,9 +10,9 @@
 			<key>Developer Identifier</key>
 			<string>ZANVZTSER6</string>
 			<key>CFBundleShortVersionString</key>
-			<string>1.2.14</string>
+			<string>1.2.15</string>
 			<key>CFBundleVersion</key>
-			<string>1214</string>
+			<string>1215</string>
 			<key>URL</key>
 			<string>https://github.com/canisbos/Quickstyle/raw/master/dist/Quickstyle.safariextz</string>
 		</dict>

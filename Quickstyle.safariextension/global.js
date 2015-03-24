@@ -36,9 +36,11 @@ function getHostnameFromUrl(url) {
 }
 function handleContextMenu(event) {
 	console.log('cm event:', event);
+	if (se.settings.hideCMItems) return;
 	if (!event.userInfo) return;
 	var userInfo = JSON.parse(event.userInfo);
 	if (userInfo.elementName == 'A') return;
+	
 	if (userInfo.elementId == 'cks_StyleBox') {
 		event.contextMenu.appendContextMenuItem(
 			'ResetStyleBoxStats', 'Reset Size and Position'
@@ -330,6 +332,7 @@ function initializeGlobals() {
 		autoSaveStyles  : true,
 		shHotkey        : 'Y',
 		useClickKeys    : true,
+		hideCMItems     : false,
 		usePopover      : !!(se.popovers),
 		popoverHeight   : 200,
 		defaultZoom     : '1.0'
