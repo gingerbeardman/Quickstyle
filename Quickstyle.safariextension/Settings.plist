@@ -40,7 +40,7 @@
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
-		<string></string>
+		<string>1.0</string>
 		<key>Key</key>
 		<string>defaultZoom</string>
 		<key>MaximumValue</key>
@@ -48,7 +48,7 @@
 		<key>MinimumValue</key>
 		<real>0.5</real>
 		<key>StepValue</key>
-		<real>0.1</real>
+		<real>0.10000000000000001</real>
 		<key>Title</key>
 		<string>⌘0 zoom level</string>
 		<key>Type</key>
@@ -100,7 +100,7 @@
 		<key>Key</key>
 		<string>hideCMItems</string>
 		<key>Title</key>
-		<string>Don&apos;t add context menu items</string>
+		<string>Don't add context menu items</string>
 		<key>Type</key>
 		<string>CheckBox</string>
 	</dict>

@@ -519,7 +519,7 @@ function finishCnK(e) {
 		cnk.target.unHighlight();
 	if (cnk.selector)
 		unHighlightSelectorMatches(cnk.selector);
-	if (window.statusbar.visible)
+	if (useStatusBar)
 		window.status = '';
 	else if (msgbox)
 		msgbox.remove();
@@ -966,7 +966,7 @@ function saveStyleBoxData(noSelector, global, preferId) {
 	safari.self.tab.dispatchMessage('SaveStyleBoxData', message);
 }
 function showResultMsg(msg, timeout) {
-	if (window.statusbar.visible) {
+	if (useStatusBar) {
 		window.status = msg;
 	} else {
 		if (mbRemovalTimer) {
@@ -1041,6 +1041,8 @@ if (/^http/.test(location.href) || location.href === 'about:blank') {
 	var myStyles = new RuleSet();
 	var myStyleElement = document.createElement('style');
 	var targetSafeTest = getTargetSafeTest();
+	var safariVersion = parseInt(/\bSafari\/(\d+)/.exec(navigator.appVersion)[1]);
+	var useStatusBar = window.statusbar.visible && safariVersion < 600;
 	
 	myStyleElement.id = 'QuickstyleCSS';
 	
