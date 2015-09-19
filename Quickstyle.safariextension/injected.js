@@ -1042,7 +1042,7 @@ if (/^http/.test(location.href) || location.href === 'about:blank') {
 	var myStyleElement = document.createElement('style');
 	var targetSafeTest = getTargetSafeTest();
 	var safariVersion = parseInt(/\bSafari\/(\d+)/.exec(navigator.appVersion)[1]);
-	var useStatusBar = window.statusbar.visible && safariVersion < 600;
+	var useStatusBar = window.statusbar.visible && safariVersion < 601;
 	
 	myStyleElement.id = 'QuickstyleCSS';
 	
