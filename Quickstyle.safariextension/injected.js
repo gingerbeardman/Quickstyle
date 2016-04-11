@@ -6,7 +6,7 @@ HTMLElement.prototype.getAtomicSelector = function (preferId) {
 		} else {
 			string += '.' + this.className.trim().replace(/ +/g,'.');
 		}
-	} else 
+	} else
 	if (this.id) {
 		string += '#' + this.id;
 	}
@@ -27,7 +27,7 @@ HTMLElement.prototype.getCompoundSelector = function (preferId) {
 		if (prefix === 'HTML') {
 			selector = prefix + selector;
 			done = true;
-		} else 
+		} else
 		if (thisNode.className) {
 			if (preferId && thisNode.id) {
 				prefix += '#' + thisNode.id;
@@ -41,7 +41,7 @@ HTMLElement.prototype.getCompoundSelector = function (preferId) {
 				selector = prefix + selector;
 				done = true;
 			}
-		} else 
+		} else
 		if (thisNode.id) {
 			prefix += '#' + thisNode.id;
 			selector = prefix + selector;
@@ -121,14 +121,14 @@ function MessageBox(dType, id) {
 	mb.insert = function () {
 		document.documentElement.appendChild(this);
 	};
-	mb.show = function () { 
-		this.style.display = 'block'; 
+	mb.show = function () {
+		this.style.display = 'block';
 	};
-	mb.hide = function () { 
-		this.style.display = 'none'; 
+	mb.hide = function () {
+		this.style.display = 'none';
 	};
-	mb.say = function (msg) { 
-		this.innerHTML = msg; 
+	mb.say = function (msg) {
+		this.innerHTML = msg;
 	};
 	mb.remove = function () {
 		document.documentElement.removeChild(this);
@@ -606,7 +606,7 @@ function handleKeyDownZoom(e) {
 				if (qs) cancelHelper(true);
 				else initiateQs();
 			}
-		} else 
+		} else
 		if (e.which === 187 || e.which === 189 || e.which === 48) {
 			e.preventDefault();
 			cnk.target = document.body;
@@ -692,7 +692,7 @@ function handleMessage(e) {
 				})();
 				if (ffChanged) {
 					safari.self.tab.dispatchMessage('PassStyles', {
-						url      : location.href, 
+						url      : location.href,
 						hostname : location.hostname
 					});
 				}
@@ -1033,9 +1033,9 @@ function writeTempRules(rules, target) {
 }
 
 if (/^http/.test(location.href) || location.href === 'about:blank') {
-	const hlOutlineStyle = '1px solid magenta';
-	const hlBackgroundStyle = 'rgba(255,0,255,0.1)';
-	
+	var hlOutlineStyle = '1px solid magenta';
+	var hlBackgroundStyle = 'rgba(255,0,255,0.1)';
+
 	var qs, cnk, affectedElements, tempRules, msgbox, mbRemovalTimer, styleBox;
 	var settings = { oldFF: null, oldFF2: null };
 	var myStyles = new RuleSet();
@@ -1043,13 +1043,13 @@ if (/^http/.test(location.href) || location.href === 'about:blank') {
 	var targetSafeTest = getTargetSafeTest();
 	var safariVersion = parseInt(/\bSafari\/(\d+)/.exec(navigator.appVersion)[1]);
 	var useStatusBar = window.statusbar.visible && safariVersion < 601;
-	
+
 	myStyleElement.id = 'QuickstyleCSS';
-	
+
 	safari.self.addEventListener('message', handleMessage, false);
 	safari.self.tab.dispatchMessage('PassSettings', window.location.hostname);
 	safari.self.tab.dispatchMessage('PassStyles', { url: location.href, hostname: location.hostname });
 	safari.self.tab.dispatchMessage('EnableToolbarButton');
-	
+
 	document.addEventListener('contextmenu', handleContextMenu, false);
 }
