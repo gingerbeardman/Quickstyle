@@ -260,6 +260,17 @@ function StyleBox(id) {
 		sf.style.margin = '0';
 		return sf;
 	}();
+	sb.closeButton = function () {
+		var cb = document.createElement('span');
+		cb.textContent = '×';
+		cb.style.position = 'absolute';
+		cb.style.right = '3px';
+		cb.style.top = '-1px';
+		cb.style.font = 'normal 16px Lucida Grande';
+		cb.style.cursor = 'pointer';
+		cb.onclick = removeStyleBox;
+		return cb;
+	}();
 	sb.resizeHandle = function () {
 		sb.rhs = 11;
 		var rh = document.createElement('img');
@@ -355,6 +366,7 @@ function StyleBox(id) {
 			styleBox.style.top = (window.innerHeight - styleBox.offsetHeight - 16) + 'px';
 	};
 	sb.appendChild(sb.seFrame);
+	sb.appendChild(sb.closeButton);
 	sb.appendChild(sb.resizeHandle);
 	sb.initPnS();
 	return sb;
@@ -721,7 +733,7 @@ function handleMessage(e) {
 			} break;
 		case 'RemoveStyleBox':
 			if (window === window.top) {
-				removeStyleBox(true);
+				removeStyleBox();
 			} break;
 		case 'RestoreSavedRules':
 			tempRules = new RuleSet();
@@ -861,7 +873,7 @@ function initiateQs() {
 }
 function insertStyleBox() {
 	if (!document.getElementById('cks_StyleBox')) {
-		document.addEventListener('mousedown', removeStyleBox);
+		document.addEventListener('keypress', removeStyleBox);
 		styleBox = new StyleBox('cks_StyleBox');
 		styleBox.insert();
 		styleBox.adjustPosition();
@@ -874,11 +886,11 @@ function registerCnKeyUp() {
 	document.addEventListener('click', ignoreClick, false);
 }
 function removeStyleBox(e) {
-	if (e === true || e.button === 0) {
+	if (e == undefined || e.keyCode === 27 || e.button === 0) {
 		if (document.getElementById('cks_StyleBox')) {
 			if (e && e.target !== styleBox) {
 				styleBox.remove();
-				document.removeEventListener('mousedown', removeStyleBox);
+				document.removeEventListener('keypress', removeStyleBox);
 			}
 		}
 	}
