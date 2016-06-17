@@ -476,6 +476,47 @@ function cnkApplyFaveFont(alternate) {
     writeStyles(myStyles, tgt);
   }
 }
+function cnkApplyHCColors(alternate) {
+  var tgt = (cnk.targetPage || cnk.target === document.documentElement) ? document.body : cnk.target;
+  cnk.selector = tgt.getCompoundSelector(false);
+  if (cnk.targetOnly) {
+    if (tgt.getAttribute('oldstyle') === null) {
+      tgt.setAttribute('oldstyle', tgt.getAttribute('style') || '');
+    }
+    if (tgt.getAttribute('rsHighContrast') !== null) {
+      tgt.style.color = '';
+      tgt.style.backgroundColor = '';
+      tgt.removeAttribute('rsHighContrast');
+    } else {
+      if (alternate) {
+        tgt.style.color = 'white !important';
+        tgt.style.backgroundColor = 'black !important';
+      } else {
+        tgt.style.color = 'black !important';
+        tgt.style.backgroundColor = 'white !important';
+      }
+      tgt.setAttribute('rsHighContrast','');
+      showResultMsg(
+        'Applied high-contrast colors to the ' + tgt.tagName + ' element'
+      );
+    }
+    tgt.highlight();
+  } else {
+    var declarations = '';
+    if (alternate) {
+      declarations += 'color: white !important;';
+      declarations += 'background-color: black !important;';
+    } else {
+      declarations += 'color: black !important;';
+      declarations += 'background-color: white !important;';
+    }
+    var r = myStyles.setRule(cnk.selector, declarations, true);
+    var bs = declarations.replace(/ !important \/\*\w+\w\*\//g, '');
+    showResultMsg('<b>' + cnk.selector + '</b> ' + bs);
+    if (!cnk.targetPage) highlightSelectorMatches(cnk.selector);
+    writeStyles(myStyles, tgt);
+  }
+}
 function cnkResetStyle(byZoomKey) {
   var tgt = (cnk.targetPage || cnk.target === document.documentElement) ? document.body : cnk.target;
   if (cnk.targetOnly) {
@@ -546,7 +587,6 @@ function excludeGlobal(rule) {
 }
 function finishCnK(e) {
   e.preventDefault();
-  // e.stopPropagation();
   if (cnk.targetOnly)
     cnk.target.unHighlight();
   if (cnk.selector)
@@ -590,6 +630,10 @@ function handleCnKeyup(e) {
     case 71: case 50: case 191:   // g,2,/
       registerCnKeyUp();
       cnkApplyFaveFont(true);
+      break;
+    case 67:                      // c
+      registerCnKeyUp();
+      cnkApplyHCColors(e.altKey || e.shiftKey);
       break;
     case 81: case 82: case 48:    // q,r,0
       registerCnKeyUp();
@@ -641,7 +685,11 @@ function handleKeyDownZoom(e) {
     } else
     if (e.which === 187 || e.which === 189 || e.which === 48) {
       e.preventDefault();
-      cnk.target = document.body;
+      if (cnk)
+        cnk.target = document.body;
+      else {
+        cnk = { target: document.body };
+      }
       switch (e.which) {
         case 187: {  // =
           cnkSetFontSize(1, e.altKey, true);
@@ -652,7 +700,7 @@ function handleKeyDownZoom(e) {
           break;
         }
         case 48: {  // 0
-          if (settings.defaultZoom * 1 == 1)
+          if (parseFloat(settings.defaultZoom) == 1)
             cnkResetStyle(true);
           else
             cnkSetZoom(settings.defaultZoom);
