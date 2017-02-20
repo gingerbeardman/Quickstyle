@@ -114,10 +114,11 @@ function handleMessage(event) {
       break;
     case 'PassSettings':
       var settings = {};
-      for (var key in se.settings) {
-        if (key == 'shHotkey') settings[key] = se.settings[key].charCodeAt(0);
+      Object.keys(se.settings).forEach(function (key) {
+        if (key == 'shHotkey')
+          settings[key] = se.settings[key].charCodeAt(0);
         else settings[key] = se.settings[key];
-      }
+      });
       event.target.page.dispatchMessage('ReceiveSettings', JSON.stringify(settings));
       break;
     case 'PassStyles':
@@ -280,9 +281,9 @@ function initialize() {
   po.width  = defaults.styleBoxStats.width;
   po.height = se.settings.popoverHeight;
 
-  for (var k in localStorage) {
-    if (localStorage[k] == '[]') delete localStorage[k];
-  }
+  Object.keys(localStorage).forEach(function (key) {
+    if (localStorage[key] == '[]') delete localStorage[key];
+  });
 
   sa.addEventListener('validate', handleValidate, true);
   sa.addEventListener('contextmenu', handleContextMenu, true);
@@ -341,11 +342,11 @@ function initializeGlobals() {
 }
 function initializeSettings() {
   var lastVersion = se.settings.lastVersion;
-  for (var key in defaults) {
+  Object.keys(defaults).forEach(function (key) {
     if (se.settings[key] === undefined) {
       se.settings[key] = defaults[key];
     }
-  }
+  });
   if (lastVersion < 1000) {
     reformSiteRules();
   }
@@ -354,11 +355,11 @@ function initializeSettings() {
 function listHosts(hostname) {
   hostname = hostname || '';
   var matchingHostnames = [];
-  for (var hn in localStorage) {
-    if (hn.match(hostname)) {
-      matchingHostnames.push(hn);
+  Object.keys(localStorage).forEach(function (key) {
+    if (key.match(hostname)) {
+      matchingHostnames.push(key);
     }
-  }
+  });
   matchingHostnames.sort();
   console.log(matchingHostnames);
 }
@@ -370,15 +371,15 @@ function listRules(hostname) {
     });
   } else {
     hostname = hostname || '';
-    for (var hn in localStorage) {
-      if (hn.match(hostname)) {
-        console.log(hn);
-        var rules = JSON.parse(localStorage[hn]);
+    Object.keys(localStorage).forEach(function (key) {
+      if (key.match(hostname)) {
+        console.log(key);
+        var rules = JSON.parse(localStorage[key]);
         rules.forEach(function (rule) {
           console.log(' ' + rule.s + ' {' + rule.d + '}');
         });
       }
-    }
+    });
   }
 }
 function parseFontString(fs, alt) {
@@ -436,17 +437,17 @@ function passSettingsToAllPages(keys) {
   }
 }
 function reformSiteRules() {
-  for (var hostname in localStorage) {
-    var rulesObject = JSON.parse(localStorage[hostname]);
+  Object.keys(localStorage).forEach(function (key) {
+    var rulesObject = JSON.parse(localStorage[key]);
     var rulesArray = [];
-    for (var selector in rulesObject) {
+    Object.keys(rulesObject).forEach(function (key) {
       rulesArray.push({
-        s : selector,
-        d : rulesObject[selector].replace(/[{}]/g, '')
+        s : key,
+        d : rulesObject[key].replace(/[{}]/g, '')
       });
-    }
-    localStorage[hostname] = JSON.stringify(rulesArray);
-  }
+    });
+    localStorage[key] = JSON.stringify(rulesArray);
+  });
 }
 function resetToolbarItems() {
   se.toolbarItems.forEach(function (tbi) {
