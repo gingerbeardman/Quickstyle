@@ -1,0 +1,256 @@
+<p class="downlink"><a href="https://github.com/canisbos/Quickstyle/raw/master/dist/Quickstyle.safariextz">Download Quickstyle</a></p>
+<p>Quickstyle is a Safari extension with which you can change the appearance of any web page by adding your own CSS rules to it. Quickstyle features a convenient &ldquo;selector helper&rdquo; that eases the task of constructing an appropriate CSS selector for the rule you want to create, and a built-in stylesheet editor so you can create and edit your rules right on the page.</p>
+<p>Quickstyle also has <a href="#shortcuts">keyboard shortcuts</a> to quickly apply one of two favorite fonts to an element or set of elements, or to change its font size, without even opening the style editor. You can use these abilities of Quickstyle even if you don&rsquo;t know anything about CSS.</p>
+<div class="highlightbox">
+  <h5>Important note for Rightsizer users!</h5>
+  <p style="margin-bottom: 0">Quickstyle is the next generation of Rightsizer. If you use Rightsizer, please note that installing Quickstyle will overwrite your copy of Rightsizer. Don&rsquo;t worry—all your saved sizes and other settings from Rightsizer will carry over to Quickstyle, and you can keep using the same click-and-keystroke actions you&rsquo;re used to from the older extension.</p>
+</div>
+<h4 id="howtouse">How to use Quickstyle</h4>
+<p>The basic steps in using Quickstyle are:</p>
+<ol class="spaced">
+  <li>Activate the selector helper by clicking Quickstyle&rsquo;s toolbar icon. (You can also use the context menu command, &ldquo;Activate Quickstyle Selector Helper&rdquo;, or press Command-Option-Y. You can change this keyboard shortcut in the extension manager.)</li>
+  <li>Move the mouse around the page until the element or set of elements you want to style is highlighted, and then click the mouse or press the space bar to select it. This will open the style editor.</li>
+  <li>Enter your CSS declarations for the selected element or set, and click <strong>Save</strong>. (Your declarations will be immediately reflected on the page.)</li>
+  <li>Close the style editor by pressing <strong>Esc</strong> or clicking anywhere on the page outside the editor.</li>
+</ol>
+<h5>Tips and detailed instructions</h5>
+<h6>The selector helper</h6>
+<p>The selector helper is a tool that automatically constructs an appropriate CSS selector based on what element is under the mouse pointer. After activating it as described above, move the mouse around the page. The element under the mouse will be highlighted with a magenta outline and background. You can see the DOM path of the highlighted element in the status bar (or, if your status bar is hidden, a temporary status bar at the bottom of the page).</p>
+<p class="blockimage">
+  <a href="http://dl.dropbox.com/u/23990/Canisbos/Quickstyle/quickstyle-screen-1.png"><img src="http://dl.dropbox.com/u/23990/Canisbos/Quickstyle/quickstyle-screen-1-small.png" alt="Quickstyle's selector helper" />
+    <br/><span class="caption">The selector helper in action</span></a>
+</p>
+<p>When you click the mouse button or press the space bar, the currently highlighted element is selected as the basis of the CSS selector to be constructed.</p>
+<p>This is how the selector is constructed:</p>
+<ul class="spaced">
+  <li>If the selected element has a class and no ID, the selector will be the element&rsquo;s tag name followed by a period and the class name.</li>
+  <p style="margin-top: 0.35em; margin-bottom: 0.5em">(Example: <code>DIV.story</code>)</p>
+  <li>If the selected element has an ID and no class, the selector will be the element&rsquo;s tag name followed by a hash mark and the ID value.</li>
+  <p style="margin-top: 0.35em; margin-bottom: 0.5em">(Example: <code>DIV#content</code>)</p>
+  <li>If the selected element has both a class <em>and</em> an ID, the selector will use the class name, <strong>unless</strong> you had pressed the Tab key while the selector helper was active—in which case it will use the ID.</li>
+  <li>If the selected element has neither a class nor an ID, Quickstyle will go up the chain of its ancestors—starting from the parent element—until it finds the first one that has a class or an ID. It will then construct a compound selector, starting with the ancestor that has the class or ID and chaining the descendants down to the selected element, using &ldquo;&gt;&rdquo; as the concatenator.</li>
+  <p style="margin-top: 0.35em; margin-bottom: 1.2em">(Example: <code>DIV.story &gt; UL &gt; LI</code>)</p>
+</ul>
+<p>The constructed selector is then automatically entered in the selector bar of the style editor.</p>
+<p style="margin-bottom: -0.75em; font-weight: bold">Interacting with the selector helper</p>
+<p>There are a number of things you can do while the selector helper is active (that is, before you select an element). The table below describes them.</p>
+<table class="mytable">
+  <col style="width: 50%">
+  <col style="width: 50%; background-color: whitesmoke">
+  <tr>
+    <th>You can do this:</th>
+    <th>By doing this:</th>
+  </tr>
+  <tr>
+    <td>Broaden the current selection</td>
+    <td>Press the <strong>left</strong> or <strong>up</strong> arrow key</td>
+  </tr>
+  <tr>
+    <td>Narrow the current selection (after broadening it)</td>
+    <td>Press the <strong>right</strong> or <strong>down</strong> arrow key</td>
+  </tr>
+  <tr>
+    <td>Switch the selector priority between ID and class</td>
+    <td>Press <strong>Tab</strong></td>
+  </tr>
+  <tr>
+    <td>Immediately increase the font size of the selection</td>
+    <td>Press <strong>A</strong> or <strong>=</strong></td>
+  </tr>
+  <tr>
+    <td>Immediately decrease the font size of the selection</td>
+    <td>Press <strong>Z</strong> or <strong>–</strong></td>
+  </tr>
+  <tr>
+    <td>Immediately apply your &ldquo;Favorite font 1&rdquo; to the selection (
+      <em>You can set this in Safari&rsquo;s extension manager.</em>)</td>
+    <td>Press <strong>F</strong> or <strong>1</strong></td>
+  </tr>
+  <tr>
+    <td>Immediately apply your &ldquo;Favorite font 2&rdquo; to the selection (
+      <em>You can set this in Safari&rsquo;s extension manager.</em>)</td>
+    <td>Press <strong>G</strong> or <strong>2</strong></td>
+  </tr>
+  <tr>
+    <td>Immediately hide the selection (great for ads)</td>
+    <td>Press <strong>D</strong></td>
+  </tr>
+  <tr>
+    <td>Make any of the above style changes temporary (not persistent)</td>
+    <td>Hold down <strong>Shift</strong> while pressing one of the above keys</td>
+  </tr>
+  <tr>
+    <td>Immediately restore the default styling of the selection</td>
+    <td>Press <strong>R</strong>, <strong>Q</strong>, or <strong>0</strong> (zero)</td>
+  </tr>
+  <tr>
+    <td>Show the DOM path of the selection in an alert box (so you can copy it)</td>
+    <td>Press <strong>C</strong></td>
+  </tr>
+  <tr>
+    <td>Open the style editor with the selector for the current selection</td>
+    <td>Click the mouse or press <strong>space</strong> or <strong>Enter</strong></td>
+  </tr>
+  <tr>
+    <td>Exit the selector helper without opening the style editor</td>
+    <td>Press <strong>Esc</strong></td>
+  </tr>
+</table>
+<h6>The style editor</h6>
+<p>The style editor appears when you click the mouse or press the space bar after activating the selector helper. (You can also open the style editor without activating the selector helper by right-clicking the page and selecting the appropriate context menu command.)</p>
+<p class="blockimage">
+  <a href="http://dl.dropbox.com/u/23990/Canisbos/Quickstyle/quickstyle-screen-0.png"><img src="http://dl.dropbox.com/u/23990/Canisbos/Quickstyle/quickstyle-screen-0-small.png" alt="Quickstyle's selector helper" />
+    <br/><span class="caption">The style editor</span></a>
+</p>
+<p>The style editor has three main components:</p>
+<dl>
+  <dt><span class="underbar">The <strong>selector menu</strong>  <span class="smaller">(on the left)</span></span>
+  </dt>
+  <dd>This lists the selectors for all the rules you have defined for the current site. To select a rule, click its selector here.</dd>
+  <dt><span class="underbar">The <strong>selector bar</strong>  <span class="smaller">(at top right)</span></span>
+  </dt>
+  <dd>This shows the currently selected rule&rsquo;s selector. You can edit the selector here.</dd>
+  <dt><span class="underbar">The <strong>declaration box</strong>  <span class="smaller">(below the selector bar)</span></span>
+  </dt>
+  <dd>This is where you edit the declarations for the currently selected rule.</dd>
+</dl>
+<p>In addition, there are <strong>Save</strong> and <strong>Revert</strong> buttons at the bottom right. Any edits you make to a selector or declarations are not saved until you click <strong>Save</strong>.</p>
+<p style="margin-bottom: -0.75em; font-weight: bold">Interacting with the style editor</p>
+<p>The table below lists the things you can do in the style editor that are not immediately obvious.</p>
+<table class="mytable">
+  <col style="width: 50%">
+  <col style="width: 50%; background-color: whitesmoke">
+  <tr>
+    <th>You can do this:</th>
+    <th>By doing this:</th>
+  </tr>
+  <tr>
+    <td>Preview the effect of the current rule on the page</td>
+    <td>Hold down the <strong>Option</strong> key.</td>
+  </tr>
+  <tr>
+    <td>Highlight elements on the page that match the current selector</td>
+    <td>Move the mouse over the selector bar (but not while editing it)</td>
+  </tr>
+  <tr>
+    <td>Highlight elements on the page that match another selector in the menu</td>
+    <td>Move the mouse over the other selector in the menu</td>
+  </tr>
+  <tr>
+    <td>Tell whether a rule has been saved</td>
+    <td>Deselect the rule in the selector menu; unsaved rules are shown in red</td>
+  </tr>
+  <tr>
+    <td>Undo unsaved changes to a rule</td>
+    <td>Click the <strong>Revert</strong> button</td>
+  </tr>
+  <tr>
+    <td>Quickly save the current rule</td>
+    <td>Press <strong>⌘-Enter</strong> while in the declaration box</td>
+  </tr>
+  <tr>
+    <td>Create a new rule</td>
+    <td>Type a new selector in the selector bar and press <strong>⌘-Enter</strong></td>
+  </tr>
+  <tr>
+    <td>Delete a rule (or several rules)</td>
+    <td>Select the rule(s) to delete in the selector menu (shift-click for a contiguous selection or Command-click for a non-contiguous one) and press <strong>Delete</strong></td>
+  </tr>
+  <tr>
+    <td>Move a rule up or down (to change its precedence)</td>
+    <td>Select it in the menu and press <strong>⌘-Up</strong> or <strong>⌘-Down</strong></td>
+  </tr>
+  <tr>
+    <td>Move between the different parts of the style editor</td>
+    <td>Press <strong>Tab</strong></td>
+  </tr>
+  <tr>
+    <td>Reposition the style editor relative to the underlying page</td>
+    <td>Click and (slowly) drag the gray border</td>
+  </tr>
+  <tr>
+    <td>Resize the style editor</td>
+    <td>Click and (slowly) drag the resize handle in the bottom right corner</td>
+  </tr>
+  <tr>
+    <td>Adjust the split between the selector menu and the declaration box</td>
+    <td>Click and drag the border between them</td>
+  </tr>
+  <tr>
+    <td>Exit the style editor</td>
+    <td>Press <strong>Esc</strong> twice or click on the page outside the editor</td>
+  </tr>
+</table>
+<h5 id="shortcuts">Shortcuts and miscellaneous things</h5>
+<p>Quickstyle has another mode of operation that does not involve either the selector helper or the style editor: You can use &ldquo;click-and-keypress&rdquo; shortcuts to quickly change the appearance of an element or set of elements. (Users of my older <a href="/rightsizer">Rightsizer</a> extension will be familiar with this feature.)</p>
+<p>Using this mode, you can change an element&rsquo;s font size or apply one of your favorite fonts (as specified in the extension manager) to it with just a click and a keypress.</p>
+<p>Here&rsquo;s how to use the click-and-keypress shortcuts:</p>
+<ol class="spaced">
+  <li>Click a representative sample of the text you want to change and <em>hold down the mouse button</em>. Don’t let it go yet.</li>
+  <li>Press the key corresponding to the action you want to perform.</li>
+  <li>Release the mouse button.</li>
+</ol>
+<p>The table below lists the keys you can press while the mouse button is down, and what they do. (Note that some actions can be triggered by more than one key.)</p>
+<table class="mytable" style="width: 100%">
+  <col style="background-color: whitesmoke">
+  <tr>
+    <th>Key(s)</th>
+    <th>Action</th>
+  </tr>
+  <tr>
+    <td class="centered code">A, +, =</td>
+    <td>Increase the font size</td>
+  </tr>
+  <tr>
+    <td class="centered code">Z, -</td>
+    <td>Decrease the font size</td>
+  </tr>
+  <tr>
+    <td class="centered code">F, 1, \</td>
+    <td>Apply Favorite font 1</td>
+  </tr>
+  <tr>
+    <td class="centered code">G, 2, /</td>
+    <td>Apply Favorite font 2</td>
+  </tr>
+  <tr>
+    <td class="centered code">C</td>
+    <td>Apply high-contrast colors (Shift-C for inverse colors)</td>
+  </tr>
+  <tr>
+    <td class="centered code">R, Q, 0 (zero)
+      <br/>
+    </td>
+    <td>Restore the default font and size</td>
+  </tr>
+</table>
+<p>In addition, there are three special keys that modify the behavior of the actions keys in various ways, and they are explained in the table below. These keys are pressed <em>before</em> any of the action keys.</p>
+<table class="mytable" style="width: 100%">
+  <col style="background-color: whitesmoke">
+  <tr>
+    <th>Key</th>
+    <th>Effect</th>
+  </tr>
+  <tr>
+    <td class="centered code">W</td>
+    <td>Changes will be applied to the whole document.</td>
+  </tr>
+  <tr>
+    <td class="centered code">X</td>
+    <td>Changes will be applied <em>only</em> to the clicked element—not to all similar elements.</td>
+  </tr>
+  <tr>
+    <td class="centered code">T</td>
+    <td>Changes will not be saved. (Applies only if autosaving is enabled.)</td>
+  </tr>
+</table>
+<p>For some tips specific to the click-and-keypress mode of operation, please refer to the <a href="/rightsizer#tips">Rightsizer page</a>.</p>
+<p>One more note: Any style changes you make using click-and-keypress shortcuts can be viewed and edited in the style editor, just like other rules you create.</p>
+<h4>Warning</h4>
+<p>
+  If you use the Safari command &ldquo;Remove All Website Data&rdquo;, either from the Privacy tab of Safari preferences or from the Reset Safari dialog box, <strong>all of your Quickstyle data will be deleted</strong>. If you don&rsquo;t want that to happen, before using the aforementioned command, make sure to back up the file <code>safari-extension_com.canisbos.rightsizer-zanvztser6_0.localstorage</code> located in the folder <em>~/Library/Safari/LocalStorage</em>. After removing all website data, copy the file back to the folder and restart Safari.</p>
+<p class="downlink"><a href="https://github.com/canisbos/Quickstyle/raw/master/dist/Quickstyle.safariextz">Download Quickstyle</a></p>
+<p style="text-align: center;"><span style="font-size: 11px;">2012 Canisbos Computing</span>
+  <br/>
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/"><img style="border-width: 0;" src="http://creativecommons.org/images/public/somerights20.png" alt="Creative Commons License" /></a>
+</p>
